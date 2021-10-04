@@ -21,8 +21,6 @@ export const Sync = () => {
   const editparams = { params: { popupHeight: '300px' } };
 
 
-  // const pageSettings = { pageSize: 10, pageCount: 2 };
-
 
   // editing setting
   const editSettings = {

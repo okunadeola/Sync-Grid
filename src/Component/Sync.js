@@ -7,18 +7,24 @@ import { Filter, Inject, Edit, Toolbar, ContextMenu, Sort, Resize, ExcelExport, 
 
 
 export const Sync = () => {
+
+  // toolbar settings
   const toolbarOptions = ['ExpandAll', 'CollapseAll']
   const contextMenuItems = ['AutoFit', 'AutoFitAll', 'SortAscending', 'SortDescending', 'Edit', 'Delete', 'Save',
     'Cancel', 'PdfExport', 'ExcelExport', 'CsvExport'];
 
+  // input validation settings
   const validationRule = { required: true };
   const validationRule1 = { date: true };
   const validationRule2 = { required: true, number: true };
   const editparams2 = { params: { format: 'n' } };
   const editparams = { params: { popupHeight: '300px' } };
-  const pageSettings = { pageSize: 10, pageCount: 2 };
 
 
+  // const pageSettings = { pageSize: 10, pageCount: 2 };
+
+
+  // editing setting
   const editSettings = {
     allowAdding: true,
     allowEditing: true,
@@ -29,7 +35,7 @@ export const Sync = () => {
 
   return (
     <div className="">
-      <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height="500" toolbar={['Add', 'Edit', 'Update', 'Cancel', ...toolbarOptions]} allowSorting='true' editSettings={editSettings} allowExcelExport='true' allowPdfExport='true' pageSettings={pageSettings} contextMenuItems={contextMenuItems}>
+      <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height="500" toolbar={['Add', 'Edit', 'Update', 'Cancel', ...toolbarOptions]} allowSorting='true' editSettings={editSettings} allowExcelExport='true' allowPdfExport='true' contextMenuItems={contextMenuItems}>
         <ColumnsDirective>
           <ColumnDirective type='checkbox' width='50'></ColumnDirective>
           <ColumnDirective field="taskID" toolbar={['ExpandAll', 'CollapseAll']} headerText="Task Id" width="100" validationRules={validationRule} isPrimaryKey={true} />
@@ -41,6 +47,7 @@ export const Sync = () => {
           <ColumnDirective field="progress" headerText="Progress" width="100" editType='dropdownedit' edit={editparams} />
           <ColumnDirective field="priority" headerText="Priority" width="100" textAlign='Left' />
         </ColumnsDirective>
+
         <Inject services={[Edit, Toolbar, ContextMenu, Sort, Resize, Filter, ExcelExport, PdfExport]} />
       </TreeGridComponent>
     </div>
